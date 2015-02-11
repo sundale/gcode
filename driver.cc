@@ -583,7 +583,7 @@ usage:
   fprintf(stderr, "executing\n");
   if (tool_flag == 0)
     {
-      if (read_tool_file(EMC2_DEFAULT_TOOLTABLE) != 0)
+      if (read_tool_file(TOOL_CONFIGURE_PATH) != 0)
         exit(1);
     }
 

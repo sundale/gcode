@@ -8,7 +8,7 @@ OBJ = $(SRC:%.cc=%.o)
 
 CC = g++
 
-chong: $(OBJ) ./librs274.so
+gcode: $(OBJ) ./librs274.so
 	@$(CC)  -o $@ $^ -Os -Wall -g -I. -L./ -Wl,-rpath,./ -lrs274
 
 librs274.so:
@@ -19,5 +19,5 @@ $(OBJ):%.o:%.cc
 
 .PHONY:clean
 clean:
-	@rm *.o librs274.so chong -rf
+	@rm *.o librs274.so gcode -rf
 	@make clean -C rs274ngc
