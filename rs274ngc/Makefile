@@ -20,11 +20,12 @@ OBJ = $(SRC:%.cc=%.o)
 CC = g++
 
 librs274.so:$(OBJ)
-	@$(CC) -shared -fPIC -o $@ $^ -Os -Wall -g -Wl,-soname,$(notdir $@)
+	@echo "\n****** Linking $(notdir $@) ******\n"
+	$(CC) -o $@ $^ -shared -fPIC -Os -Wall -g -Wl,-soname,$(notdir $@)
 	@cp $@ ..
 
 $(OBJ):%.o:%.cc
-	@$(CC) -c -o $@ $< -fPIC -I.  -I../include
+	$(CC) -c -o $@ $< -w -fPIC -I. -I../include
 
 .PHONY:clean
 clean:
