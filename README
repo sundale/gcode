@@ -6,4 +6,8 @@ these codes are part of linuxcnc
 git version:
 		5fb4c9c3befacc70e9a6c76b253b745c68114678
 
+compile:
+	make clean;make CC=arm-linux-g++
+	make clean;make CC=g++ 或 make clean;make
+
 
