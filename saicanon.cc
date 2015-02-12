@@ -420,13 +420,17 @@ void ARC_FEED(int line_number,
          , c /*CC*/
          );
 	radius = hypot(first_end - first_axis, second_end - second_axis);
-	if(rotation == 1)
+	if(rotation > 0)
 	{
 		fprintf(_outfile, "\t\tcounter clockwise\n");
 	}
-	else if(rotation == -1)
+	else if(rotation < 0)
 	{
 		fprintf(_outfile, "\t\clockwise\n");
+	}
+	else if(rotation == 0)
+	{
+		
 	}
 	fprintf(_outfile, "\t\tstart (x=%.4f, y=%.4f, z=%.4f)\n", _program_position_x, _program_position_y, _program_position_z);
   if (_active_plane == CANON_PLANE_XY)
