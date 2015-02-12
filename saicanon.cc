@@ -405,6 +405,8 @@ void ARC_FEED(int line_number,
  , double u, double v, double w
 )
 {
+	double radius = 0.0f;
+
   fprintf(_outfile, "%5d ", _line_number++);
   print_nc_line_number();
   fprintf(_outfile, "ARC_FEED(%.4f, %.4f, %.4f, %.4f, %d, %.4f"
@@ -417,6 +419,9 @@ void ARC_FEED(int line_number,
          , b /*BB*/
          , c /*CC*/
          );
+	radius = hypot(first_end - first_axis, second_end - second_axis);
+	fprintf(_outfile, "\t\tARC_RADIUS(%.4f)\n", radius);
+
   if (_active_plane == CANON_PLANE_XY)
     {
       _program_position_x = first_end;
