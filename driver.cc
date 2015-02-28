@@ -329,10 +329,6 @@ static int spi_read_multi(int fd,uint16_t addr ,uint16_t *buf,uint16_t count)
 	ret = ioctl(fd, SPI_IOC_MESSAGE(count*2), tr);
 	if (ret < 1)
 		pabort("can't send spi message");
-	printf("read spi:[%04x]\r\n",addr);
-	for(i=0;i<count;i++)
-		printf("%04x ",buf[i]);
-	printf("\r\n");
 	free(tr);
 	free(r_temp);
 	free(t_temp);
@@ -405,10 +401,6 @@ static int spi_write_multi(int fd,uint16_t addr ,uint16_t *buf,uint16_t count)
 	ret = ioctl(fd, SPI_IOC_MESSAGE(count*2), tr);
 	if (ret < 1)
 		pabort("can't send spi message");
-	printf("write spi:[%04x]\r\n",addr);
-	for(i=0;i<count;i++)
-		printf("%04x ",buf[i]);
-	printf("\r\n");
 	free(tr);
 	free(r_temp);
 	free(t_temp);
