@@ -264,7 +264,6 @@ static uint16_t spi_write_single(int fd,uint16_t addr,uint16_t dat)
 	ret = ioctl(fd, SPI_IOC_MESSAGE(2), &tr);
 	if (ret < 1)
 		pabort("can't send spi message");
-	printf("write spi:[%04x]=0x%04x \r\n",addr,dat);
 	return 0;	
 }
 
@@ -376,7 +375,6 @@ static int spi_write_multi(int fd,uint16_t addr ,uint16_t *buf,uint16_t count)
 		t_temp[i*2] = (((my_addr&0x00ff)<<8)|(my_addr>>8));
 		t_temp[i*2] |= 0x0080;
 		r_temp[i*2] = 0x00;
-		printf("write my_addr= %x \r\n",t_temp[i*2]);
 		tr[i*2].tx_buf = (unsigned long)&(t_temp[i*2]);
 		tr[i*2].rx_buf = (unsigned long)&r_temp[i*2]; 
 		tr[i*2].len = 2;
