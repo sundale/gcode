@@ -108,6 +108,17 @@ stdout to a file.
 
 //extern void rs274ngc_line_text(char * line_text, int max_size);
 extern Interp interp_new;
+
+extern int spi_fd;
+
+extern void line_demo(int spi_fd, int x, int y, int z);
+
+extern int get_pulse_x(float mm);
+
+extern int get_pulse_y(float mm);
+
+extern int get_pulse_z(float mm);
+
 void print_nc_line_number()
 {
   char text[256];
@@ -301,12 +312,18 @@ void STRAIGHT_TRAVERSE( int line_number,
          , b /*BB*/
          , c /*CC*/
          );
+  line_demo(spi_fd, 
+				get_pulse_x(x-_program_position_x),
+				get_pulse_y(y-_program_position_y),
+				get_pulse_z(z-_program_position_z));
+  
   _program_position_x = x;
   _program_position_y = y;
   _program_position_z = z;
   _program_position_a = a; /*AA*/
   _program_position_b = b; /*BB*/
   _program_position_c = c; /*CC*/
+  
 }
 
 /* Machining Attributes */
@@ -477,6 +494,11 @@ void STRAIGHT_FEED(int line_number,
          , b /*BB*/
          , c /*CC*/
          );
+  line_demo(spi_fd, 
+				get_pulse_x(x-_program_position_x),
+				get_pulse_y(y-_program_position_y),
+				get_pulse_z(z-_program_position_z));
+  
   _program_position_x = x;
   _program_position_y = y;
   _program_position_z = z;
